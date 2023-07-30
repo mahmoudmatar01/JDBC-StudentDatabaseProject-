@@ -1,10 +1,10 @@
-package student_services_repo;
+package Services;
 
-import student_model.Student;
+import Models.Student;
 
 import java.util.List;
 
-public interface IStudent_Services {
+public interface IStudentServices {
 
     List<Student> getAllStudent();
 
