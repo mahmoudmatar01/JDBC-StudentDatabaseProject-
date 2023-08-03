@@ -14,15 +14,20 @@ public class StudentServicesImpl implements IStudentServices {
     @Override
     public List<Student> getAllStudent() {
         Connection con = DBConnection.getConnection();
-        if (con == null) {
-            return null;
-        }
+        //check Connection
+        checkConnectivity(con);
         List<Student> allStudent = new ArrayList<>();
         String query = "SELECT * FROM student";
         try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                allStudent.add(new Student(resultSet.getString("name"), resultSet.getDouble("gpa"), resultSet.getInt("id"), resultSet.getString("phone")));
+                Student student =  Student.builder()
+                        .id(resultSet.getInt("id"))
+                        .name(resultSet.getString("name"))
+                        .phone(resultSet.getString("phone"))
+                        .gpa(resultSet.getDouble("gpa"))
+                        .build();
+                allStudent.add(student);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -39,19 +44,22 @@ public class StudentServicesImpl implements IStudentServices {
     @Override
     public Student getStuById(int id) {
         Connection con = DBConnection.getConnection();
-        if (con == null) {
-            return null;
-        }
+        //check Connection
+        checkConnectivity(con);
         String query = "SELECT * FROM student WHERE id=?";
         try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                Student student = new Student(resultSet.getString("name"), resultSet.getDouble("gpa"), resultSet.getInt("id"), resultSet.getString("phone"));
+//                Student student = new Student(resultSet.getString("name"), resultSet.getDouble("gpa"), resultSet.getInt("id"), resultSet.getString("phone"));
+                Student student =  Student.builder()
+                        .id(resultSet.getInt("id"))
+                        .name(resultSet.getString("name"))
+                        .phone(resultSet.getString("phone"))
+                        .gpa(resultSet.getDouble("gpa"))
+                        .build();
                 return student;
             }
-
-//        preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -67,9 +75,8 @@ public class StudentServicesImpl implements IStudentServices {
     @Override
     public void updateStudent(Student student) {
         Connection con = DBConnection.getConnection();
-        if (con == null) {
-            return;
-        }
+        //check Connection
+        checkConnectivity(con);
         String query = "UPDATE student SET name=?, gpa=? ,phone=? WHERE id=?";
         try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
             preparedStatement.setString(1, student.getStudentName());
@@ -92,9 +99,8 @@ public class StudentServicesImpl implements IStudentServices {
     @Override
     public void AddStudent(Student student) {
         Connection con = DBConnection.getConnection();
-        if (con == null) {
-            return;
-        }
+        //check Connection
+        checkConnectivity(con);
         String query = "INSERT INTO student (name,gpa,phone) VALUES(?,?,?)";
         try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
             preparedStatement.setString(1, student.getStudentName());
@@ -116,9 +122,8 @@ public class StudentServicesImpl implements IStudentServices {
     @Override
     public void deleteStudent(int id) {
         Connection con = DBConnection.getConnection();
-        if (con == null) {
-            return;
-        }
+        //check Connection
+        checkConnectivity(con);
         String query = "DELETE FROM student WHERE id=?";
         try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
             preparedStatement.setInt(1, id);
@@ -132,6 +137,12 @@ public class StudentServicesImpl implements IStudentServices {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    void checkConnectivity(Connection con){
+        if(con==null){
+            return;
         }
     }
 }
