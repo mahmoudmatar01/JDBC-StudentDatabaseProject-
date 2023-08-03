@@ -7,7 +7,12 @@ public class Home {
     public static void main(String[] args) {
 
         IStudentServices iStudentServices = new StudentServicesImpl();
-        Student student = new Student("Ziad", 3.00,  "0111234543");
+//        Student student = new Student("Mahmoud",3.1,"01128673348");
+        Student student =  Student.builder()
+                .name("Mahmoud")
+                .gpa(3.1)
+                .phone("01128673348")
+                .build();
         iStudentServices.AddStudent(student);
 //        iStudentServices.updateStudent(new Student("Matar",3.4,1,"01111614941"));
 //        System.out.println(iStudentServices.getAllStudent());
@@ -18,7 +23,43 @@ public class Home {
     }
 }
 
-// To connect in sql server mangement :-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// To connect in sql server management studio :-
 
 //        String connectionString="jdbc:sqlserver://DESKTOP-UQA266F;Database=CourseraDb;IntegratedSecurity=true;encrypt=true;trustServerCertificate=true";
 //        try{
