@@ -58,7 +58,7 @@ public class StudentServicesImpl implements IStudentServices {
                         .phone(resultSet.getString("phone"))
                         .gpa(resultSet.getDouble("gpa"))
                         .build();
-                return student;
+                    return student;
             }
         } catch (SQLException e) {
             e.printStackTrace();

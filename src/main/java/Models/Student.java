@@ -1,6 +1,8 @@
 package Models;
 
 public class Student {
+
+    // normal class attributes
     private  String studentName;
     private  double gpa;
     private int id;
@@ -10,10 +12,6 @@ public class Student {
         this.studentName = studentName;
         this.gpa = gpa;
         this.id = id;
-        this.phone = phone;
-    } public Student(String studentName, double gpa, String phone) {
-        this.studentName = studentName;
-        this.gpa = gpa;
         this.phone = phone;
     }
 

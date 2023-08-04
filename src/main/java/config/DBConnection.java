@@ -11,6 +11,18 @@ public class DBConnection {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
 
+    private DBConnection(){}
+
+    public static DBConnection getInstance(){
+        if(dbConnection==null){
+            dbConnection=new DBConnection();
+        }
+        return dbConnection;
+    }
+
+    private static DBConnection dbConnection=null;
+
+
     private static Connection connection;
 
     public static Connection getConnection() {

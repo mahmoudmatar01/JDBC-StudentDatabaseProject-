@@ -9,47 +9,19 @@ public class Home {
         IStudentServices iStudentServices = new StudentServicesImpl();
 //        Student student = new Student("Mahmoud",3.1,"01128673348");
         Student student =  Student.builder()
-                .name("Mahmoud")
-                .gpa(3.1)
-                .phone("01128673348")
+                .name("Eng/Ramy")
+                .gpa(4.5)
+                .phone("01234556")
                 .build();
         iStudentServices.AddStudent(student);
 //        iStudentServices.updateStudent(new Student("Matar",3.4,1,"01111614941"));
 //        System.out.println(iStudentServices.getAllStudent());
-//        System.out.println(iStudentServices.getStuById(4));
+//        System.out.println(iStudentServices.getStuById(5));
 //        iStudentServices.deleteStudent(2);
 
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
