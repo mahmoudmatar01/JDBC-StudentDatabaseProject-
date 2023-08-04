@@ -24,7 +24,7 @@ public class StudentServicesImpl implements IStudentServices {
                 Student student =  Student.builder()
                         .id(resultSet.getInt("id"))
                         .name(resultSet.getString("name"))
-                        .phone(resultSet.getString("phone"))
+                        .phone("+2"+resultSet.getString("phone"))
                         .gpa(resultSet.getDouble("gpa"))
                         .build();
                 allStudent.add(student);
@@ -55,7 +55,7 @@ public class StudentServicesImpl implements IStudentServices {
                 Student student =  Student.builder()
                         .id(resultSet.getInt("id"))
                         .name(resultSet.getString("name"))
-                        .phone(resultSet.getString("phone"))
+                        .phone("+2"+resultSet.getString("phone"))
                         .gpa(resultSet.getDouble("gpa"))
                         .build();
                     return student;
@@ -81,7 +81,7 @@ public class StudentServicesImpl implements IStudentServices {
         try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
             preparedStatement.setString(1, student.getStudentName());
             preparedStatement.setDouble(2, student.getGpa());
-            preparedStatement.setString(3, student.getPhone());
+            preparedStatement.setString(3, "+2"+student.getPhone());
             preparedStatement.setInt(4, student.getId());
             preparedStatement.executeUpdate();
 //        preparedStatement.close();
@@ -105,7 +105,7 @@ public class StudentServicesImpl implements IStudentServices {
         try (PreparedStatement preparedStatement = con.prepareStatement(query)) {
             preparedStatement.setString(1, student.getStudentName());
             preparedStatement.setDouble(2, student.getGpa());
-            preparedStatement.setString(3, student.getPhone());
+            preparedStatement.setString(3, "+2"+student.getPhone());
             preparedStatement.execute();
 //        preparedStatement.close();
         } catch (SQLException e) {
