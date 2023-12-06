@@ -141,12 +141,9 @@ callableStatement.execute();
 `CallableStatement` is suitable for executing stored procedures that may return results or have output parameters.
 
 
-```
-Java project demonstrates the use of JDBC (Java Database Connectivity) to interact with a MySQL database for managing student information
 
-```
 
-#JDBC Student Database Project
+# JDBC Student Database Project
 
 ## Overview
 This Java project demonstrates the use of JDBC (Java Database Connectivity) to interact with a MySQL database for managing student information. The project includes classes for establishing a database connection, a Student class to represent student entities, and a `StudentServicesImpl` class implementing various operations on the student database.
